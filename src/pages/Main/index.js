@@ -3,5 +3,5 @@ import React from 'react';
 // import { Container } from './styles';
 
 export default function Main() {
-  return <div />;
+  return <h1>Main page</h1>;
 }

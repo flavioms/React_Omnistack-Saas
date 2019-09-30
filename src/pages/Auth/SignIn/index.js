@@ -8,7 +8,7 @@ export default function SignIn() {
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     dispatch(AuthActions.signInRequest(email, password));
   };
@@ -23,7 +23,7 @@ export default function SignIn() {
           name="email"
           id="email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={e => setEmail(e.target.value)}
         />
 
         <span>Senha</span>
@@ -32,10 +32,12 @@ export default function SignIn() {
           name="password"
           id="password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={e => setPassword(e.target.value)}
         />
 
-        <Button size="big" type="submit">Entrar</Button>
+        <Button size="big" type="submit">
+          Entrar
+        </Button>
       </SignForm>
     </Container>
   );
