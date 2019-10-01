@@ -1,7 +1,11 @@
 import React from 'react';
-
-// import { Container } from './styles';
+import TeamSwitcher from '~/components/TeamSwitcher';
+import { Container } from './styles';
 
 export default function Main() {
-  return <h1>Main page</h1>;
+  return (
+    <Container>
+      <TeamSwitcher />
+    </Container>
+  );
 }
