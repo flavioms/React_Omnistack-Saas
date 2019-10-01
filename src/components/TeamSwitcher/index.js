@@ -11,11 +11,15 @@ export default function TeamSwitcher() {
     dispatch(TeamsActions.getTeamsRequest());
   }, [dispatch]);
 
+  const handleTeamSelect = team => {
+    dispatch(TeamsActions.selectTeam(team));
+  };
+
   return (
     <Container>
       <TeamList>
         {teams.map(team => (
-          <Team>
+          <Team key={team.id} onClick={() => handleTeamSelect(team)}>
             <img
               src={`https://ui-avatars.com/api/?font-size=0.33&background=7159C1&color=fff&name=${team.name}`}
               alt={team.name}
