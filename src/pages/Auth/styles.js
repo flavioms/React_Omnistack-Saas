@@ -16,7 +16,7 @@ export const SignForm = styled.form`
   width: 400px;
   padding: 40px;
   border-radius: 5px;
-  box-shadow: 0 2px 10px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
   background: #36393f;
 
   h1 {
@@ -38,8 +38,8 @@ export const SignForm = styled.form`
     height: 40px;
     padding: 10px;
     border-radius: 3px;
-    border: 1px solid rgba(0,0,0,0.3);
-    background: rgba(0,0,0,0.1);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.1);
     color: #f6f6f6;
     margin-top: 8px;
     transition: border 0.15s ease;
