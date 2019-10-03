@@ -14,3 +14,13 @@ export function* signIn({ email, password }) {
     toast.error('Falha no Login, verifique seu e-mail/senha');
   }
 }
+
+export function* signOut() {
+  try {
+    localStorage.removeItem('@Omni:token');
+    localStorage.removeItem('@Omni:team');
+    yield history.push('/signin');
+  } catch (error) {
+    toast.error('Falha no Login, verifique seu e-mail/senha');
+  }
+}

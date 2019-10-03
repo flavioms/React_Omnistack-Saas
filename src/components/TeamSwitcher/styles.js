@@ -12,6 +12,11 @@ export const Container = styled.aside`
 export const TeamList = styled.div`
   display: flex;
   flex-direction: column;
+  overflow: scroll;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const Team = styled.button`
@@ -69,5 +74,21 @@ export const NewTeam = styled.button`
     60% {
       transform: translate3d(4px, 0, 0);
     }
+  }
+`;
+
+export const Logout = styled.button`
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px dashed #e04848;
+  background: transparent;
+  color: #e04848;
+  font-weight: bold;
+  transition: all 0.2s;
+
+  &:hover {
+    border-color: #a43d3d;
+    color: #a43d3d;
   }
 `;
