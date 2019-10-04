@@ -11,3 +11,14 @@ export function* getProjects() {
     toast.error('Falha ao buscar seus times');
   }
 }
+
+export function* createProject({ title }) {
+  try {
+    const response = yield call(api.post, 'projects', { title });
+    yield put(ProjectsActions.createProjectSuccess(response.data));
+
+    yield put(ProjectsActions.closeProjectModal());
+  } catch (error) {
+    toast.error('Falha ao cadastrar projeto');
+  }
+}

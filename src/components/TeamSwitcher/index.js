@@ -16,7 +16,7 @@ export default function TeamSwitcher() {
 
   useEffect(() => {
     dispatch(TeamsActions.getTeamsRequest());
-  }, [teams]);
+  }, []);
 
   const handleTeamSelect = team => {
     dispatch(TeamsActions.selectTeam(team));
