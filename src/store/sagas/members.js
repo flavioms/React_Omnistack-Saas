@@ -20,3 +20,12 @@ export function* updateMember({ id, roles }) {
     toast.error('Falha ao buscar seus membros');
   }
 }
+
+export function* inviteMember({ email }) {
+  try {
+    yield call(api.post, `invites`, { invites: [email] });
+    toast.success('Convite enviado!');
+  } catch (error) {
+    toast.error('Falha ao seu convite');
+  }
+}

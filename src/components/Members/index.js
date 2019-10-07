@@ -6,11 +6,12 @@ import api from '~/services/api';
 import MembersActions from '~/store/ducks/members';
 import Modal from '~/components/Modal';
 import Button from '~/styles/components/Button';
-import { MembersList } from './styles';
+import { MembersList, Invite } from './styles';
 
 export default function Members() {
   const dispatch = useDispatch();
   const [listRoles, setListRoles] = useState([]);
+  const [invite, setInvite] = useState('');
   const members = useSelector(state => state.members.data);
   const closeMembersModal = () => dispatch(MembersActions.closeMembersModal());
 
@@ -23,6 +24,11 @@ export default function Members() {
     dispatch(MembersActions.updateMemberRequest(id, roles));
   };
 
+  const handleInvite = e => {
+    e.preventDefault();
+    dispatch(MembersActions.inviteMemberRequest(invite));
+  };
+
   useEffect(() => {
     dispatch(MembersActions.getMembersRequest());
     getRoles();
@@ -31,6 +37,15 @@ export default function Members() {
   return (
     <Modal>
       <h1>Membros</h1>
+      <Invite onSubmit={handleInvite}>
+        <input
+          name="invite"
+          placeholder="Convidar para o time"
+          value={invite}
+          onChange={e => setInvite(e.target.value)}
+        />
+        <Button type="submit">Enviar</Button>
+      </Invite>
       <form>
         <MembersList>
           {members.map(member => (
