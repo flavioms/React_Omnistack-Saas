@@ -3,18 +3,23 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import ProjectsActions from '~/store/ducks/projects';
+import MembersActions from '~/store/ducks/members';
 import Modal from '~/components/Modal';
 import { Container, Project } from './styles';
 import Button from '~/styles/components/Button';
+import Members from '~/components/Members';
 
 export default function Projects() {
   const dispatch = useDispatch();
   const activeTeam = useSelector(state => state.teams.active);
   const projects = useSelector(state => state.projects.data);
-  const modal = useSelector(state => state.projects.projectModalOpen);
+  const modalProject = useSelector(state => state.projects.projectModalOpen);
+  const modalMembers = useSelector(state => state.members.membersModalOpen);
   const [newProject, setNewProject] = useState('');
-  const closeModal = () => dispatch(ProjectsActions.closeProjectModal());
-  const openModal = () => dispatch(ProjectsActions.openProjectModal());
+
+  const closeProjectModal = () => dispatch(ProjectsActions.closeProjectModal());
+  const openProjectModal = () => dispatch(ProjectsActions.openProjectModal());
+  const openMembersModal = () => dispatch(MembersActions.openMembersModal());
 
   const handleCreateProject = e => {
     e.preventDefault();
@@ -31,8 +36,8 @@ export default function Projects() {
       <header>
         <h1>{activeTeam.name}</h1>
         <div>
-          <Button onClick={openModal}>+ Novo</Button>
-          <Button onClick={handleCreateProject}>Membros</Button>
+          <Button onClick={openProjectModal}>+ Novo</Button>
+          <Button onClick={openMembersModal}>Membros</Button>
         </div>
       </header>
       {projects.map(project => (
@@ -41,7 +46,7 @@ export default function Projects() {
         </Project>
       ))}
 
-      {modal && (
+      {modalProject && (
         <Modal>
           <h1>Criar Projeto</h1>
           <form onSubmit={handleCreateProject}>
@@ -55,12 +60,14 @@ export default function Projects() {
             <Button type="submit" size="big">
               Salvar
             </Button>
-            <Button size="small" color="gray" onClick={closeModal}>
+            <Button size="small" color="gray" onClick={closeProjectModal}>
               Cancelar
             </Button>
           </form>
         </Modal>
       )}
+
+      {modalMembers && <Members />}
     </Container>
   );
 }
