@@ -41,7 +41,7 @@ export default function Projects() {
         </div>
       </header>
       {projects.map(project => (
-        <Project>
+        <Project key={String(project.id)}>
           <p>{project.title}</p>
         </Project>
       ))}

@@ -11,3 +11,12 @@ export function* getMembers() {
     toast.error('Falha ao buscar seus membros');
   }
 }
+
+export function* updateMember({ id, roles }) {
+  try {
+    yield call(api.put, `members/${id}`, { roles: roles.map(role => role.id) });
+    toast.success('Membro atualizado');
+  } catch (error) {
+    toast.error('Falha ao buscar seus membros');
+  }
+}
