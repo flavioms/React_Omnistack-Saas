@@ -15,9 +15,8 @@ export function* getTeams() {
 export function* createTeam({ name }) {
   try {
     const response = yield call(api.post, 'teams', { name });
-    yield put(TeamsActions.createTeamSuccess(response.data));
-
     yield put(TeamsActions.closeTeamModal());
+    yield put(TeamsActions.createTeamSuccess(response.data));
   } catch (error) {
     toast.error('Falha ao cadastrar time');
   }

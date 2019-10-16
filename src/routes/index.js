@@ -8,8 +8,8 @@ import SignUp from '~/pages/Auth/SignUp';
 const Routes = () => (
   <Switch>
     <Route path="/" exact isPrivate component={Main} />
-    <Route path="/signin" component={SignIn} />
     <Route path="/signup" component={SignUp} />
+    <Route path="/signin" component={SignIn} />
   </Switch>
 );
 
